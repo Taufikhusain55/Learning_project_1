@@ -22,6 +22,8 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+app.engine("ejs",ejsMate);
+app.use(express.static(path.join(__dirname,"/public")));
 
 
 app.get("/", (req, res) => {
@@ -69,19 +71,6 @@ app.delete("/listings/:id", async (req, res) => {
     res.redirect("/listings");
 })
 
-// 
-// app.get("/testListing", async (req,res) => {
-//     let sampleListing = new Listing({
-//         title : "My new Villa",
-//         description: "by the beach",
-//         price: "1200",
-//         location: "Calangute, Goa",
-//         country: "India",
-//     });
-//     await sampleListing.save();
-//     console.log("Saved");
-//     res.send("Sample was saved successfully");
-// })
 
 
 

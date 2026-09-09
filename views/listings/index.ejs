@@ -1,20 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WanderLust</title>
-</head>
+<% layout("/layouts/boilerplate") %>
+
 <body>
     <h3>All Listings</h3>
-    <form action="/listings/new" method="GET">
+        <!-- <form action="/listings/new" method="GET">
         <button>Create new Listing</button>
-    </form>
-    <ul>
-        <% for(list of allListings) { %>
-        <li><a href="/listings/<%= list._id %>"> <%= list.title %> </a></li>
-        <% } %>
-    </ul>
-</body>
-</html>
+    </form> -->
+<ul>
+<% for(list of allListings) { %>
+<div class="card" style="width: 18rem;">
+    <img src="<%= list.image.url %>" class="card-img-top" alt="listing_image">
+    <div class="card-body">
+        <p class="card-text">
+            <%= list.title %> <br>    
+            &#8377; <%= list.price.toLocaleString("en-IN") %> / night <br>
+        </p>
+    </div>
+</div>
 
+    <li><a href="/listings/<%= list._id %>"> <%= list.title %> </a></li>
+    <% } %>
+</ul>
+</body>
